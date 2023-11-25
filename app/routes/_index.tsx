@@ -9,11 +9,13 @@ export const meta: MetaFunction = () => {
 
 export default function Index() {
   return (
-    <div>
+    <div className="prose">
       <h1>Hiker Type</h1>
       <p>What type of hiker are you?</p>
       <p>
-        <a href="/quiz">Take the quiz!</a>
+        <a href="/quiz" className="btn btn-primary">
+          Take the quiz!
+        </a>
       </p>
     </div>
   );
