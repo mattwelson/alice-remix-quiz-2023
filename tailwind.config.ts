@@ -5,7 +5,7 @@ export default {
   theme: {
     extend: {
       gridTemplateColumns: {
-        wrapper: "1fr min(65ch, 100%) 1fr",
+        wrapper: "1fr min(65ch, calc(100% - 2rem)) 1fr",
       },
     },
   },

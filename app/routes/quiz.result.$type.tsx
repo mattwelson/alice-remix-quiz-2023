@@ -36,15 +36,17 @@ export default function HikerTypePage() {
   return (
     <div className="prose">
       <h1 className="text-4xl font-bold">{hikerType.title}</h1>
-      <button
-        className="btn btn-primary"
-        onClick={() => toClipboard(hikerType)}
-      >
-        {isCopied ? "Results copied!" : "Share your results"}
-      </button>
-      <a className="btn btn-outline btn-primary" href="/quiz">
-        Take the quiz again
-      </a>
+      <div className="grid gap-2">
+        <button
+          className="btn btn-primary"
+          onClick={() => toClipboard(hikerType)}
+        >
+          {isCopied ? "Results copied!" : "Share your results"}
+        </button>
+        <a className="btn btn-outline btn-primary" href="/quiz">
+          Take the quiz again
+        </a>
+      </div>
     </div>
   );
 }

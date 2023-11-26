@@ -32,7 +32,7 @@ export async function action({ request, params }: ActionFunctionArgs) {
 
   const answers = session.get("answers") ?? {};
   answers[question as string] = answer as string;
-  session.set("answers", answers!);
+  session.set("answers", answers);
 
   // check if there's more questions
   const questionIndex = parseInt(params.slug!, 10);

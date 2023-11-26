@@ -46,7 +46,7 @@ export default function App() {
             </a>
           </div>
         </header>
-        <div className="grid grid-cols-wrapper [&>*]:col-start-2">
+        <div className="grid gap-4 grid-cols-wrapper [&>*]:col-start-2">
           <Outlet />
         </div>
         <ScrollRestoration />
