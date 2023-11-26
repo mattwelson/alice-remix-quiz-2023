@@ -39,7 +39,6 @@ export async function action({ request, params }: ActionFunctionArgs) {
   const { questions } = await getAllQuestions();
   const nextQuestion =
     questions.length > questionIndex ? questions[questionIndex] : null;
-  console.log(nextQuestion, questionIndex, questions.length);
   // redirect to next question
   if (nextQuestion)
     return redirect(`/quiz/${questionIndex + 1}`, {

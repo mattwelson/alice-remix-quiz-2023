@@ -10,7 +10,24 @@ export async function getAllQuestions() {
         questions: q("questions")
           .filter()
           .deref()
-          .grab$({ _id: q.string(), text: q.string() }),
+          .grab$({
+            _id: q.string(),
+            text: q.string(),
+            answers: q("answers")
+              .filter()
+              .grab$({
+                _key: q.string(),
+                text: q.string(),
+                weights: q("weights")
+                  .filter()
+                  .grab$({
+                    value: q.number(),
+                    type: q("type")
+                      .deref()
+                      .grabOne$("slug.current", q.string()),
+                  }),
+              }),
+          }),
       })
   );
 }
@@ -25,19 +42,25 @@ export async function getQuestion(questionId: string) {
       .grab$({
         _id: q.string(),
         text: q.string(),
-        answers: q("answers")
-          .filter()
-          .grab$({
-            _key: q.string(),
-            text: q.string(),
-            weights: q("weights")
-              .filter()
-              .grab$({
-                value: q.number(),
-                type: q("type").deref().grabOne$("slug.current", q.string()),
-              }),
-          }),
+        answers: q("answers").filter().grab$({
+          _key: q.string(),
+          text: q.string(),
+        }),
       }),
     { questionId }
+  );
+}
+
+export async function getHikerType(hikerTypeSlug: string) {
+  return runQuery(
+    q("*")
+      .filterByType("hikerType")
+      .filter("$hikerTypeSlug == slug.current")
+      .slice(0)
+      .grab$({
+        _id: q.string(),
+        title: q.string(),
+      }),
+    { hikerTypeSlug }
   );
 }
