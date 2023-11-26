@@ -19,7 +19,8 @@ const { getSession, commitSession, destroySession } =
       path: "/",
       sameSite: "strict",
       secrets: [process.env.SESSION_SECRET!],
-      secure: true,
+      // Allow the cookies to work on http for development - but not production
+      secure: process.env.NODE_ENV != "development",
     },
   });
 

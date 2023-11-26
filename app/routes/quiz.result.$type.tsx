@@ -16,7 +16,7 @@ export default function HikerTypePage() {
   function toClipboard(hikerType: Awaited<ReturnType<typeof getHikerType>>) {
     navigator.clipboard
       .writeText(
-        `I just took the hiking quiz, I'm "${hikerType.title}".\nWhat type of hiker are you? Take the quiz to find out!\n\nhttps://aliceadventuring.com/quiz`
+        `I just took the hiking quiz, I'm "${hikerType.title}".\nWhat type of hiker are you? Take the quiz to find out!\n\nhttps://quiz.aliceadventuring.com/`
       )
       .then(() => {
         /* clipboard successfully set */
